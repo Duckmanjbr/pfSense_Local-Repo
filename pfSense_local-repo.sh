@@ -59,8 +59,14 @@ echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
 Download_packages ()
 {
 #Download all the packages into the new repository directory.
+Header
+echo "++++++++++++++++ Updating packages  ++++++++++++++++"
+echo ""
 pkg upgrade
 pkg update
+Header
+echo "+++++++++++++++  Downloading packages ++++++++++++++"
+echo ""
 mkdir -p "$REPO_DIR"/"$REPO"
 for PACKAGE in $PACKAGES; do
         pkg fetch -y -d -o "$REPO_DIR"/"$REPO" $PACKAGE
