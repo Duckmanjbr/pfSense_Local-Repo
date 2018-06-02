@@ -56,8 +56,8 @@ pkg repo "$REPO_DIR"
 echo 'local_repo: {' > /usr/local/etc/pkg/repos/local_repo.conf
 echo '  url: "file:///usr/local/etc/pkg/repos/offline",' >> /usr/local/etc/pkg/repos/local_repo.conf
 echo '  mirror_type: "none",' >> /usr/local/etc/pkg/repos/local_repo.conf
-echo '  enabled: yes' >> /usr/local/etc/pkg/repos/local_repo.conf
-echo '}'
+echo '  enabled: yes,' >> /usr/local/etc/pkg/repos/local_repo.conf
+echo '}' >> /usr/local/etc/pkg/repos/local_repo.conf
 }
 #===================================
 #
