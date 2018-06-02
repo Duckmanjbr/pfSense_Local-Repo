@@ -55,7 +55,7 @@ Create_repo ()
 {
 pkg repo "$REPO_DIR"/"$REPO_CONF"
 echo 'local_repo: {' > "$REPO_DIR"/"$REPO_CONF"
-echo '  url: "file://"$REPO_DIR"/"$REPO"",' >> "$REPO_DIR"/"$REPO_CONF"
+echo "  url: file://$REPO_DIR/$REPO," >> "$REPO_DIR"/"$REPO_CONF"
 echo '  mirror_type: "none",' >> "$REPO_DIR"/"$REPO_CONF"
 echo '  enabled: yes,' >> "$REPO_DIR"/"$REPO_CONF"
 echo '}' >> "$REPO_DIR"/"$REPO_CONF"
