@@ -29,12 +29,14 @@
 #####################################################
 #Selectable Variables (user selected)
 #
-REPO_DIR='/usr/local/etc/pkg/repo/offline/'
+REPO='offline'
+REPO_CONF='local_repo.conf'
 PACKAGES='pfSense-pkg-Backup pfSense-pkg-Cron pfSense-pkg-Notes pfSense-pkg-Open-VM-Tools pfSense-pkg-Shellcmd pfSense-pkg-Status_Traffic_Totals pfSense-pkg-bandwidthd pfSense-pkg-openvpn-client-export pfSense-pkg-tftpd'
 
 #####################################################
 #Script Variables
 #
+REPO_DIR='/usr/local/etc/pkg/repos'
 #####################################################
 #Functions:
 #
@@ -43,27 +45,26 @@ Download_packages ()
 #Download all the packages into the new repository directory.
 pkg upgrade
 pkg update
-mkdir -p "$REPO_DIR"
-pkg fetch -y -d -o "$REPO_DIR" "$PACKAGES"
+mkdir -p "$REPO_DIR"/"$REPO"
+pkg fetch -y -d -o "$REPO_DIR"/"$REPO" "$PACKAGES"
 }
 #
 #===================================
 #
 Create_repo ()
 {
-mkdir "$REPO_DIR"
-pkg repo "$REPO_DIR"
-echo 'local_repo: {' > /usr/local/etc/pkg/repos/local_repo.conf
-echo '  url: "file:///usr/local/etc/pkg/repos/offline",' >> /usr/local/etc/pkg/repos/local_repo.conf
-echo '  mirror_type: "none",' >> /usr/local/etc/pkg/repos/local_repo.conf
-echo '  enabled: yes,' >> /usr/local/etc/pkg/repos/local_repo.conf
-echo '}' >> /usr/local/etc/pkg/repos/local_repo.conf
+pkg repo "$REPO_DIR"/"$REPO_CONF"
+echo 'local_repo: {' > "$REPO_DIR"/"$REPO_CONF"
+echo '  url: "file://"$REPO_DIR"/"$REPO"",' >> "$REPO_DIR"/"$REPO_CONF"
+echo '  mirror_type: "none",' >> "$REPO_DIR"/"$REPO_CONF"
+echo '  enabled: yes,' >> "$REPO_DIR"/"$REPO_CONF"
+echo '}' >> "$REPO_DIR"/"$REPO_CONF"
 }
 #===================================
 #
 Disable_default_repos ()
 {
-sed -i "s/enabled: yes/enabled: no/g" /usr/local/etc/pkg/repos/pfSense.conf
+sed -i "s/enabled: yes/enabled: no/g" "$REPO_DIR"/pfSense.conf
 }
 #
 ####################################################
