@@ -20,8 +20,8 @@
 #
 #Description 
 #=======================
-# This script creates a local repository on FreeBSD and pulls down the added packages into the new repo.
-# This script will also disable all remote repositories and stop pfSense from calling out to pfSense.org.
+# This script creates a local repository on pfSense and pulls down the added packages into the new repo.
+# This script will also disable all remote repositories and stop pfSense from calling out to pkg.pfSense.org for pkg updates.
 #
 #Notes
 #=======================
