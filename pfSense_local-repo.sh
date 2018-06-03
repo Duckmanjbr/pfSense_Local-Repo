@@ -42,6 +42,7 @@ PACKAGES="${PACKAGES} pfSense-pkg-bandwidthd"
 PACKAGES="${PACKAGES} pfSense-pkg-openvpn-client-export"
 PACKAGES="${PACKAGES} pfSense-pkg-tftpd"
 PACKAGES="${PACKAGES} pfSense-pkg-sudo"
+#PACKAGES="${PACKAGES} pfSense-pkg*"
 #
 #####################################################
 #Script Variables
