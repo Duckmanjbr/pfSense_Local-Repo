@@ -25,7 +25,7 @@
 #
 #Notes
 #=======================
-# https://github.com/Duckmanjbr/DIP_Config/blob/master/pfSense_local-repo.sh
+#https://github.com/Duckmanjbr/pfSense_Local-Repo
 #
 #####################################################
 #Selectable Variables (user selected)
