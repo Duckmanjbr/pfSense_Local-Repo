@@ -68,7 +68,6 @@ pkg update
 #pkg search "pfSense-pkg*"
 mkdir -p "$REPO_DIR"/"$REPO"
 for PACKAGE in $PACKAGES; do
-        Header
         echo "+++++++++++ Downloading $PACKAGE +++++++++++"
         pkg fetch -y -d -o "$REPO_DIR"/"$REPO" $PACKAGE
 done
@@ -83,7 +82,7 @@ echo "++++++++++++++++   Creating repo   ++++++++++++++++++"
 echo ""
 pkg repo "$REPO_DIR"/"$REPO"
 Header
-echo "++++++++++++   Creating $REPO_CONF  +++++++++++++++++"
+echo "++++++++++   Creating $REPO_CONF  ++++++++++++++"
 echo ""
 echo 'local_repo: {' > "$REPO_DIR"/"$REPO_CONF"
 echo "  url: file://$REPO_DIR/$REPO," >> "$REPO_DIR"/"$REPO_CONF"
@@ -100,7 +99,7 @@ Disable_default_repos ()
 Header
 echo "+++++++++++++++  Disabling pfSense repos  ++++++++++"
 echo ""
-mv "$REPO_DIR"/pfSense.conf "$REPO_DIR"/pfSense.bkp
+sed -i -e 's/enabled: yes/enabled: no/g' /usr/local/share/pfSense/pkg/repos/pfSense-repo.conf
 }
 # 
 #===================================
@@ -111,7 +110,7 @@ Header
 echo "++++++++++  Cleaning up remnants of script +++++++++"
 echo ""
 rm -fR "$REPO_DIR"/"$REPO_CONF" "$REPO_DIR"/"$REPO"
-mv "$REPO_DIR"/pfSense.bkp "$REPO_DIR"/pfSense.conf
+sed -i -e 's/enabled: no/enabled: yes/g' /usr/local/share/pfSense/pkg/repos/pfSense-repo.conf
 }
 #
 ####################################################
@@ -119,5 +118,5 @@ mv "$REPO_DIR"/pfSense.bkp "$REPO_DIR"/pfSense.conf
 #
 Download_packages
 Create_repo
-#Disable_default_repos
+Disable_default_repos
 #Clean_up
