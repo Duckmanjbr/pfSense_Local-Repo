@@ -67,7 +67,7 @@ Header
 echo "++++++++++++++++ Updating packages  +++++++++++++++++"
 pkg update
 pkg upgrade
-#pkg search "pfSense-pkg*"
+#pkg search "pfSense-pkg*" | awk '{ print $1 }'
 mkdir -p "$REPO_DIR"/"$REPO"
 for PACKAGE in $PACKAGES; do
         echo "+++++++++++ Downloading $PACKAGE +++++++++++"
