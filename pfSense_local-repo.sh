@@ -67,7 +67,7 @@ pkg update
 mkdir -p "$REPO_DIR"/"$REPO"
 for PACKAGE in $PACKAGES; do
         Header
-        echo "++++++++++++++ Downloading $PACKAGE + +++++++++++++"
+        echo "++++++++++++++ Downloading $PACKAGE +++++++++++++++"
         echo""
         pkg fetch -y -d -o "$REPO_DIR"/"$REPO" $PACKAGE
 done
