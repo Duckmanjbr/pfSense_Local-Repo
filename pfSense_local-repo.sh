@@ -3,7 +3,7 @@
 #Info
 #=======================
 #	File: pfSense_local-repo.sh
-#	Name: Create local repositories on FreeBSD (pfSense)
+#	Name: Create local repositories on pfSense
 #
 	VERSION_NUM='1.0'
 # 	*Version is major.minor format
@@ -12,9 +12,10 @@
 #
 #History
 #=======================		
-#	13Dec2017 v1.0 
+#	 2Jun2018 v1.0 
 #		Dread Pirate
-#		*Initial build to create local repo and pull a list of packages.
+#		*Initial build
+#		*Creates/Enables local repo and disables pfSense repos.
 #	
 #
 #Description 
