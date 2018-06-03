@@ -46,6 +46,7 @@ PACKAGES="${PACKAGES} pfSense-pkg-tftpd"
 #Script Variables
 #
 REPO_DIR='/usr/local/etc/pkg/repos'
+#
 #####################################################
 #Functions:
 #
@@ -61,14 +62,13 @@ Download_packages ()
 #Download all the packages into the new repository directory.
 Header
 echo "++++++++++++++++ Updating packages  ++++++++++++++++"
-echo ""
 pkg upgrade
 pkg update
+#pkg search "pfSense-pkg*"
 mkdir -p "$REPO_DIR"/"$REPO"
 for PACKAGE in $PACKAGES; do
         Header
-        echo "++++++++++++++ Downloading $PACKAGE +++++++++++++++"
-        echo""
+        echo "+++++++++++ Downloading $PACKAGE ++++++++++++"
         pkg fetch -y -d -o "$REPO_DIR"/"$REPO" $PACKAGE
 done
 }
