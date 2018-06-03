@@ -65,8 +65,8 @@ Download_packages ()
 #Download all the packages into the new repository directory.
 Header
 echo "++++++++++++++++ Updating packages  +++++++++++++++++"
-pkg upgrade
 pkg update
+pkg upgrade
 #pkg search "pfSense-pkg*"
 mkdir -p "$REPO_DIR"/"$REPO"
 for PACKAGE in $PACKAGES; do
