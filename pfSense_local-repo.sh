@@ -62,14 +62,14 @@ Download_packages ()
 {
 #Download all the packages into the new repository directory.
 Header
-echo "++++++++++++++++ Updating packages  ++++++++++++++++"
+echo "++++++++++++++++ Updating packages  +++++++++++++++++"
 pkg upgrade
 pkg update
 #pkg search "pfSense-pkg*"
 mkdir -p "$REPO_DIR"/"$REPO"
 for PACKAGE in $PACKAGES; do
         Header
-        echo "+++++++++++ Downloading $PACKAGE ++++++++++++"
+        echo "+++++++++++ Downloading $PACKAGE +++++++++++"
         pkg fetch -y -d -o "$REPO_DIR"/"$REPO" $PACKAGE
 done
 }
